@@ -1,16 +1,28 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
 	title: string;
+	image: string;
+	stars: number;
+	id: number;
 }
 
-const { title } = Astro.props;
+const { title, image, stars, id } = Astro.props;
 ---
 
 <div class="link-card">
-    <a href={title}>
-        <h2>{title}</h2>
-        <!-- <img src="https://via.placeholder.com/300x150" alt="{title}" /> -->
-    </a>
+        <a href={id.toString()}> 
+			<h2>{title}</h2>
+			<Image 
+				src={image}
+				alt={title}
+				class="astro-a"
+				width="50" 
+				height="50"
+			/>
+			<p>⭐️ {stars}</p>
+		</a>
 <style>
 	.link-card {
 		list-style: none;

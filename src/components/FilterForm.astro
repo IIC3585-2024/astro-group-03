@@ -1,0 +1,40 @@
+---
+const { categories, selectedCategory, minStars, streamingServices, selectedService } = Astro.props;
+---
+
+<form action="/" method="GET">
+  <label for="category">Filtrar por Categoría:</label>
+  <select id="category" name="category">
+    <option value="All" selected={selectedCategory === 'All'}>All</option>
+    {categories.map((category) => (
+      <option value={category} selected={selectedCategory === category}>{category}</option>
+    ))}
+  </select>
+  
+  <label for="minStars">Estrellas Mínimas:</label>
+  <input type="number" step="0.5" id="minStars" min="0" max="10" name="minStars" value={minStars} />
+
+  <label for="streaming_service">Servicio de Streaming:</label>
+  <select id="streaming_service" name="streaming_service">
+    <option value="All" selected={selectedService === 'All'}>All</option>
+    {streamingServices.map((service) => (
+      <option value={service} selected={selectedService === service}>{service}</option>
+    ))}
+  </select>
+  
+  <button type="submit">Filtrar</button>
+</form>
+
+
+
+<style>
+    form {
+    margin-bottom: 24px;
+    }
+    label {
+    margin-right: 8px;
+    }
+    select {
+    padding: 4px 8px;
+    }
+</style>

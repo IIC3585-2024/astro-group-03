@@ -1,0 +1,32 @@
+---
+import { getSerieComments, addSerieComment } from '../lib/endpoints-manager.ts';
+
+interface Props {
+	serieId: number;
+	n_reviews: number;
+}
+
+const { serieId, n_reviews } = Astro.props;
+const reviews = await getSerieComments(serieId);
+---
+<h3>Comentarios ({n_reviews})</h3>
+{reviews.map(review => (
+	<div class="comment-container">
+		<p>{review.comment}</p>
+		<p class="stars">⭐️ {review.stars}</p>
+	</div>
+))}
+
+<form @submit={console.log("Falta implementar inicio de sesion")}>
+	<label for="comment">Comentario:</label>
+	<textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+	<br>
+	<label for="stars">Estrellas (0-10):</label>
+	<input type="number" id="stars" name="stars" min="0" max="10" required>
+	<br>
+	<button type="submit">Agregar Review</button>
+</form>
+
+<style>
+	@import '../styles/comments.css';
+</style>
