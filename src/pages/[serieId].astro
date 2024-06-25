@@ -8,7 +8,7 @@ const { serieId } = Astro.params;
 const serie = await getSeriesById(serieId);
 ---
 
-<Layout title="{serie.name}">
+<Layout title={serie.name}>
 <main>
     <h2>{serie.name}</h2>
     <Image
@@ -19,9 +19,9 @@ const serie = await getSeriesById(serieId);
         class="image"
     />
 
-    <p>Number of Seasons: {serie.n_seasons}</p>
     <p>Category: {serie.category}</p>
     <p>Streaming Service: {serie.streaming_service}</p>
+    <p>Number of Seasons: {serie.n_seasons}</p>
     <p>Episodes by Season: {serie.n_chapter_by_season}</p>
     <p>{serie.description}</p>
 

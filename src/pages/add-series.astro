@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Agregar Serie">
+    <main class="add-serie-main">
+      <h1>Agregar Serie</h1>
+      <form action="/api/series" method="post" class="add-serie-form">
+        <input type="hidden" name="stars" value={0} />
+        <label for="title">Titulo</label>
+        <input type="text" name="title" id="title" required />
+        <label for="category">Categorías</label>
+        <input type="text" name="category" id="category" required />
+        <label for="n_seasons">Número de Temporadas</label>
+        <input type="number" name="n_seasons" id="n_seasons" min="0" required />
+        <label for="n_chapter_by_season">Episodios por Temporada</label>
+        <input type="number" name="n_chapter_by_season" id="n_chapter_by_season" min="0" required />
+        <label for="description">Descripción</label>
+        <textarea name="description" id="description" required></textarea>
+        <label for="image">Imagen (url)</label>
+        <input type="text" name="image" id="image" required />
+        <button type="submit">Agregar Serie</button>
+      </form>
+    </main>
+  </Layout>
+
+<style>
+	@import '../styles/index.css';
+    @import '../styles/add-series.css';
+</style>

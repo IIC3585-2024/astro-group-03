@@ -1,28 +1,44 @@
 ---
-interface Props {
-	title: string;
-}
+import { checkAuth } from '../lib/auth';
 
-const { title } = Astro.props;
+const { cookies } = Astro;
+
+const { isAuthenticated } = await checkAuth(cookies);
+
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<header>
-		<a href="/"><h1>Recomendaciones Chidas</h1></a>
-	</header>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{Astro.props.title}</title>
+  </head>
+  <body>
+    <header class="header-container">
+      <a href="/"><h1>Recomendaciones Chidas</h1></a>
+      <div class="auth-buttons">
+        {isAuthenticated ? (
+          <>
+            <a href="/add-series"><button>Añadir Serie</button></a>
+            <form action="/api/signout" method="post" style="display: inline;">
+              <button type="submit">Cerrar Sesión</button>
+            </form>
+          </>
+        ) : (
+          <a href="/signin"><button>Iniciar Sesión</button></a>
+        )}
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+  </body>
 </html>
+
 <style is:global>
-	@import '../styles/layout.css';
+  @import '../styles/layout.css';
 </style>

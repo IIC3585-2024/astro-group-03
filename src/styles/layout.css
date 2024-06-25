@@ -32,3 +32,34 @@ a {
     color: rgb(var(--accent));
     text-decoration: none;
 }
+.auth-buttons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.auth-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.auth-buttons button:hover {
+    background-color: #0056b3;
+}
+.header-container {
+    background-color: #0a0530; 
+    padding: 10px 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    color: white;
+  }
+
+  .header-container h1 {
+    margin: 0;
+    font-size: 24px;
+  }

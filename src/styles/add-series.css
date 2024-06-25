@@ -1,0 +1,42 @@
+.add-serie-main {
+    padding: 20px;
+    background-color: #053351;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-serie-form {
+    display: grid;
+    gap: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-serie-form label {
+    font-weight: bold;
+}
+
+.add-serie-form input[type="text"],
+.add-serie-form input[type="number"],
+.add-serie-form textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.add-serie-form button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-serie-form button[type="submit"]:hover {
+    background-color: #45a049;
+}
