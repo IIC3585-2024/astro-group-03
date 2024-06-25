@@ -11,8 +11,13 @@ const { serieId, n_reviews } = Astro.props;
 const reviews = await getSerieComments(serieId);
 
 const { isAuthenticated } = await checkAuth(Astro.cookies);
----
 
+const { request } = Astro;
+const url = new URL(request.url);
+const errorMessage = url.searchParams.get('message');
+console.log(errorMessage);
+---
+{errorMessage && <script>alert('Ha ocurrido un error');</script>}
 <h3>Comentarios ({n_reviews})</h3>
 {reviews.map(review => (
   <div class="comment-container">

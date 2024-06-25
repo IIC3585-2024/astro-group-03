@@ -1,14 +1,14 @@
 import { addSerieComment } from "../../lib/endpoints-manager";
 import { checkAuth } from "../../lib/auth";
 
-export const POST = async ({ request, cookies }) => {
+export const POST = async ({ request, cookies, redirect }) => {
   const formData = await request.formData();
   const serieId = formData.get("serieId")?.toString();
   const comment = formData.get("comment")?.toString();
   const stars = formData.get("stars")?.toString();
 
   if (!serieId || !comment || !stars) {
-    return new Response("Todos los campos son obligatorios", { status: 400 });
+    return redirect(`/series/${serieId}?message=${encodeURIComponent("Todos los campos son obligatorios")}`);
   }
 
   try {
@@ -19,8 +19,8 @@ export const POST = async ({ request, cookies }) => {
     }
 
     await addSerieComment(serieId, comment, stars, check.user.id);
-    return new Response("Comentario añadido correctamente", { status: 200 });
+    return redirect(`/series/${serieId}`);
   } catch (error) {
-    return new Response(error.message, { status: 500 });
+    return redirect(`/series/${serieId}?message=${encodeURIComponent(error.message)}`);
   }
 };

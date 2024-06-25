@@ -1,9 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const { request } = Astro;
+const url = new URL(request.url);
+const errorMessage = url.searchParams.get('message');
+console.log(errorMessage);
 ---
 
 <Layout title="Iniciar sesión">
   <h1>Iniciar sesión</h1>
+  {errorMessage && <script>alert('Ha ocurrido un error');</script>}
   <p>¿Nuevo aquí? <a href="/register">Crea una cuenta</a></p>
   <div class="auth-form">
     <form action="/api/signin" method="post">
