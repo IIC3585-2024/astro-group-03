@@ -6,7 +6,7 @@
 - Juan Pablo Vergara Lobos
 
 ## Aplicación Deploy
-Se puede encontrar una versión de la página deployeada en Versel en https://vercel.com/aplaza2s-projects/astro-group-03/9MtkaRtFjoqNLnqgTgdWVExbaJR4
+Se puede encontrar una versión de la página deployeada en Versel en: astro-group-03.vercel.app
 
 ## Ejecución local
 1. Es necesario crear un archivo .env de la siguiente forma:
